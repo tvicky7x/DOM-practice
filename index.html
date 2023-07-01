@@ -34,35 +34,32 @@
           <li class="list-group-item">Item 3</li>
           <li class="list-group-item">Item 4</li>
         </ul>
+        <p></p>
       </div>
     </div>
     <script>
-      document.title = "DOM Practice";
-      document.querySelector("#main-header").style.borderBottom =
-        "3px solid black";
-      document.querySelector(".title").style.fontWeight = "bold";
-      document.querySelector(".title").style.color = "Green";
-      let items = document.getElementsByClassName("list-group-item");
-      items[2].style.backgroundColor = "green";
-      for (let i = 0; i < items.length; i++) {
-        items[i].style.fontWeight = "bold";
-        items[i].style.color = "darkgreen";
-        if (i === 2) {
-          items[i].style.color = "white";
-        }
-      }
-      let secondItem = document.querySelector(".list-group-item:nth-child(2)");
-      secondItem.style.backgroundColor = "darkgreen";
-      secondItem.style.color = "white";
-      let thirdItem = document.querySelector(".list-group-item:nth-child(3)");
-      thirdItem.style.visibility = "hidden";
-
-      let secondlist = document.querySelectorAll("li")[1];
-      secondlist.style.color = "PaleGreen";
-      let oddlist = document.querySelectorAll("li:nth-child(odd)");
-      for (let i = 0; i < oddlist.length; i++) {
-        oddlist[i].style.backgroundColor = "LightGreen";
-      }
+      let ulList = document.querySelector("#items");
+      ulList.parentNode.style.backgroundColor = "#f4f4f4";
+      ulList.lastElementChild.style.backgroundColor = "YellowGreen";
+      console.log(ulList.lastChild);
+      console.log(ulList.nextSibling);
+      ulList.nextElementSibling.innerHTML = "Thank You";
+      ulList.nextElementSibling.style.display = "none";
+      console.log(ulList.previousSibling);
+      ulList.previousElementSibling.innerHTML = "List Items";
+      //
+      newDiv = document.createElement("div");
+      newDiv.className = "hello";
+      newDiv.id = "helloId";
+      newDiv.setAttribute("title", "Hello World Massage");
+      console.log(newDiv);
+      //text-node
+      let divText = document.createTextNode("Hello World");
+      newDiv.appendChild(divText);
+      // Inserting in Header
+      let container = document.querySelector("header .container");
+      let h1 = document.querySelector("header h1");
+      container.insertBefore(newDiv, h1);
     </script>
   </body>
 </html>
