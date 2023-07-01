@@ -33,7 +33,6 @@
           <li class="list-group-item">Item 2</li>
           <li class="list-group-item">Item 3</li>
           <li class="list-group-item">Item 4</li>
-          <li class="newli">Item 5</li>
         </ul>
       </div>
     </div>
@@ -52,11 +51,17 @@
           items[i].style.color = "white";
         }
       }
-      let newli = document.getElementsByClassName("newli")[0];
-      newli.style.listStyle = "none";
-      let lis = document.getElementsByTagName("li");
-      for (let i = 0; i < lis.length; i++) {
-        lis[i].style.fontFamily = "verdana";
+      let secondItem = document.querySelector(".list-group-item:nth-child(2)");
+      secondItem.style.backgroundColor = "darkgreen";
+      secondItem.style.color = "white";
+      let thirdItem = document.querySelector(".list-group-item:nth-child(3)");
+      thirdItem.style.visibility = "hidden";
+
+      let secondlist = document.querySelectorAll("li")[1];
+      secondlist.style.color = "PaleGreen";
+      let oddlist = document.querySelectorAll("li:nth-child(odd)");
+      for (let i = 0; i < oddlist.length; i++) {
+        oddlist[i].style.backgroundColor = "LightGreen";
       }
     </script>
   </body>
