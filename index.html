@@ -34,26 +34,31 @@
       <div id="main" class="card card-body">
         <h2 class="title">Add Items</h2>
         <form id="addForm" class="form-inline mb-3">
-          <input type="text" class="form-control mr-2" id="item" />
-          <input type="submit" class="btn btn-dark" value="Submit" />
+          <input type="text" class="form-control mr-2 mt-2" id="item" />
+          <input type="text" class="form-control mr-2 mt-2" id="dis" />
+          <input type="submit" class="btn btn-dark mt-2" value="Submit" />
         </form>
         <h2 class="title">Items</h2>
         <ul id="items" class="list-group">
           <li class="list-group-item">
             Item 1
             <button class="btn btn-danger btn-sm float-right delete">X</button>
+            <button class="btn btn-sm float-right edit mr-2">EDIT</button>
           </li>
           <li class="list-group-item">
             Item 2
             <button class="btn btn-danger btn-sm float-right delete">X</button>
+            <button class="btn btn-sm float-right edit mr-2">EDIT</button>
           </li>
           <li class="list-group-item">
             Item 3
             <button class="btn btn-danger btn-sm float-right delete">X</button>
+            <button class="btn btn-sm float-right edit mr-2">EDIT</button>
           </li>
           <li class="list-group-item">
             Item 4
             <button class="btn btn-danger btn-sm float-right delete">X</button>
+            <button class="btn btn-sm float-right edit mr-2">EDIT</button>
           </li>
         </ul>
       </div>
@@ -70,7 +75,9 @@
       e.preventDefault();
 
       // value to add
-      let val = document.getElementById("item").value;
+      let title = document.getElementById("item").value;
+      let dis = document.getElementById("dis").value;
+      let val = `${title} ${dis}`;
 
       // creating new li item
       let newli = document.createElement("li");
@@ -93,6 +100,18 @@
       // adding delelte in newlist
       newli.appendChild(delbtn);
 
+      // creating edit btn
+      let editbtn = document.createElement("button");
+
+      // adding class to edit
+      editbtn.className = "btn btn-sm float-right edit mr-2";
+
+      // adding text to edit
+      editbtn.appendChild(document.createTextNode("EDIT"));
+
+      // adding edit to list
+      newli.appendChild(editbtn);
+
       // adding list to ul
       listItems.appendChild(newli);
     }
@@ -107,6 +126,22 @@
           listItems.removeChild(li);
         }
       }
+    }
+
+    // Search Function
+    document.getElementById("filter").addEventListener("keyup", searchlist);
+
+    function searchlist(e) {
+      let searchterm = e.target.value.toLowerCase();
+      let textlist = listItems.getElementsByTagName("li");
+      Array.from(textlist).forEach((item) => {
+        let text = item.firstChild.textContent.toLowerCase();
+        if (text.includes(searchterm)) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
     }
   </script>
 </html>
