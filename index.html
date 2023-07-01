@@ -33,6 +33,7 @@
           <li class="list-group-item">Item 2</li>
           <li class="list-group-item">Item 3</li>
           <li class="list-group-item">Item 4</li>
+          <li class="newli">Item 5</li>
         </ul>
       </div>
     </div>
@@ -50,6 +51,12 @@
         if (i === 2) {
           items[i].style.color = "white";
         }
+      }
+      let newli = document.getElementsByClassName("newli")[0];
+      newli.style.listStyle = "none";
+      let lis = document.getElementsByTagName("li");
+      for (let i = 0; i < lis.length; i++) {
+        lis[i].style.fontFamily = "verdana";
       }
     </script>
   </body>
